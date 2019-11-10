@@ -50,6 +50,8 @@ int main(void) {
 
 ### 트리
 
+![](https://www.usna.edu/Users/cs/taylor/courses/ic312/units/05/balanced.png)
+
 트리는 자신이 가르키는 데이터가 1개가 아닐수도 있는 구조이며 이것은 선형구조와의 결정적인 차이점이다. 그리고 트리구조는 계층 구조를 가진다.
 자식 노드가 2개 오는 트리를 이진 트리(Binary Tree), 자식이 3개 오는 삼진 트리(Ternary Tree)가 있는데 주로 이진 트리(Binary Tree)를 사용한다.
 
