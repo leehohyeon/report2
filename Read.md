@@ -43,3 +43,21 @@ Perfect Binary Tree - 모든 노드의 자식 노드 개수가 2개이고 잎 �
 
 ```
 
+***
+
+### 그래프
+
+
+
+### 그래프의 종류
+
+Directed Graph - 방향이 있는 그래프
+Undirected Graph - 방향이 없는 그래프
+Cyclic Graph - 최소 하나의 원이 있는 그래프
+Acyclic Graph - 원이 하나도 없는 그래프
+
+### 예제 코드
+
+```
+
+```
