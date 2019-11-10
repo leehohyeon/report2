@@ -70,12 +70,65 @@ Perfect Binary Tree - 모든 노드의 자식 노드 개수가 2개이고 잎 �
 ### 예제 코드
 
 ```
-
+#include <stdio.h>
+#include<stdlib.h>
+#include<memory.h>
+typedef struct treeNode {
+	char data;
+	struct treeNode* left;
+	struct treeNode* right;
+} treeNode;
+treeNode* makeRootNode(char data, treeNode* leftNode, treeNode* rightNode) {
+	treeNode* root = (treeNode*)malloc(sizeof(treeNode));
+	root->data = data;
+	root->left = leftNode;
+	root->right = rightNode;
+	return root;
+}
+void preorder(treeNode* root) {
+	if (root) {
+		printf("%c", root->data);
+		preorder(root->left);
+		preorder(root->right);
+	}
+}
+void inorder(treeNode* root) {
+	if (root) {
+		inorder(root->left);
+		printf("%c", root->data);
+		inorder(root->right);
+	}
+}
+void postorder(treeNode* root) {
+	if (root) {
+		postorder(root->left);
+		postorder(root->right);
+		printf("%c", root->data);
+	}
+}
+void main() {
+	treeNode* n7 = makeRootNode('D', NULL, NULL);
+	treeNode* n6 = makeRootNode('C', NULL, NULL);
+	treeNode* n5 = makeRootNode('B', NULL, NULL);
+	treeNode* n4 = makeRootNode('A', NULL, NULL);
+	treeNode* n3 = makeRootNode('/', n6, n7);
+	treeNode* n2 = makeRootNode('*', n4, n5);
+	treeNode* n1 = makeRootNode('-', n2, n3);
+	printf("\n preorder : ");
+	preorder(n1);
+	printf("\n inorder : ");
+	inorder(n1);
+	printf("\n postorder : ");
+	postorder(n1);
+	getchar();
+}
 ```
 
 ***
 
 ### 그래프
+
+![](https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ1t-ky1GOITfzgeO9F9UvehxXFxXMvTD8_kCkYSw3-mfsUzV7C)
 
 그래프의 구성 요소에는 특정 위치를 나타내는 노드, 노드 간의 관계를 나타내는 간선이 있고 모든 그래프는 정점과 간선의 집합으로 이루어진다고 할 수 있으며 사이클을 가질 수 있다. 사이클은 트리와 그래프를 구분하는 가장 큰 차이점이다.
 
@@ -92,5 +145,84 @@ Acyclic Graph - 원이 하나도 없는 그래프
 ### 예제 코드
 
 ```
+#include <stdio.h>
+#include <stdlib.h>
+struct AdjListNode
+{
+	int dest;
+	struct AdjListNode* next;
+};
+struct AdjList
+{
+	struct AdjListNode* head;
+};
+struct Graph
+{
+	int V;
+	struct AdjList* array;
+};
+struct AdjListNode* newAdjListNode(int dest)
+{
+	struct AdjListNode* newNode =
+		(struct AdjListNode*) malloc(sizeof(struct AdjListNode));
+	newNode->dest = dest;
+	newNode->next = NULL;
+	return newNode;
+}
+struct Graph* createGraph(int V)
+{
+	struct Graph* graph =
+		(struct Graph*) malloc(sizeof(struct Graph));
+	graph->V = V;
+	graph->array =
+		(struct AdjList*) malloc(V * sizeof(struct AdjList));
+	int i;
+	for (i = 0; i < V; ++i)
+		graph->array[i].head = NULL;
+	return graph;
+}
+void addEdge(struct Graph* graph, int src, int dest)
+{
+	struct AdjListNode* newNode = newAdjListNode(dest);
+	newNode->next = graph->array[src].head;
+	graph->array[src].head = newNode;
+	newNode = newAdjListNode(src);
+	newNode->next = graph->array[dest].head;
+	graph->array[dest].head = newNode;
+}
+void printGraph(struct Graph* graph)
+{
+	int v;
+	for (v = 0; v < graph->V; ++v)
+	{
+		struct AdjListNode* pCrawl = graph->array[v].head;
+		printf("\n Adjacency list of vertex %d\n head ", v);
+		while (pCrawl)
+		{
+			printf("-> %d", pCrawl->dest);
+			pCrawl = pCrawl->next;
+		}
+		printf("\n");
+	}
+}
+int main()
+{
+	int V = 5;
+	struct Graph* graph = createGraph(V);
+	addEdge(graph, 0, 1);
+	addEdge(graph, 0, 4);
+	addEdge(graph, 1, 2);
+	addEdge(graph, 1, 3);
+	addEdge(graph, 1, 4);
+	addEdge(graph, 2, 3);
+	addEdge(graph, 3, 4);
+	printGraph(graph);
+	return 0;
+}
 
 ```
+
+***
+
+### 소감
+
