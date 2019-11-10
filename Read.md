@@ -2,6 +2,8 @@
 
 ### 리스트
 
+![](https://dojang.io/pluginfile.php/708/mod_page/content/14/unit74-1.png)
+
 리스트란 데이터가 들어올때 마다 동적으로 메모리를 할당하는 자료 구조 이고 노드안에 들어있는 데이터 필드와 링크라는 변수의 모습에 따라 단일 연결리스트(Singly Linked List), 이중 연결리스트(Doubly Linked List), 환형 연결리스트(Circular Linked List)로 구분된다.
 
 ### 리스트의 종류
@@ -47,13 +49,16 @@ Perfect Binary Tree - 모든 노드의 자식 노드 개수가 2개이고 잎 �
 
 ### 그래프
 
-
+그래프의 구성 요소에는 특정 위치를 나타내는 노드, 노드 간의 관계를 나타내는 간선이 있고 모든 그래프는 정점과 간선의 집합으로 이루어진다고 할 수 있으며 사이클을 가질 수 있다. 사이클은 트리와 그래프를 구분하는 가장 큰 차이점이다.
 
 ### 그래프의 종류
 
 Directed Graph - 방향이 있는 그래프
+
 Undirected Graph - 방향이 없는 그래프
+
 Cyclic Graph - 최소 하나의 원이 있는 그래프
+
 Acyclic Graph - 원이 하나도 없는 그래프
 
 ### 예제 코드
